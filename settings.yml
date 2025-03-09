@@ -1,0 +1,21 @@
+---
+strategy: static
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+polling_url: ''
+polling_headers: ''
+custom_fields:
+- keyname: api_key
+  field_type: string
+  name: API Key
+  description: Your LastFM API Key
+  placeholder: xxxxxxxxxxxxxxxxxxxxxxxxx
+- keyname: username
+  field_type: string
+  name: Username
+  description: Your LastFM Username
+  placeholder: username
+name: LastFM
+refresh_interval: 15
