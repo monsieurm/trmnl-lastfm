@@ -10,6 +10,7 @@ This plug-in shows LastFM last track listened and other user information on [TRM
  3. Provide your username and your API Key in the settings page of plug-in
 	 3.1. Fill your LastFM API Key
 	 3.2. Fill yout LastFM username
-	 3.3. Don't touch any other settings
+	 3.3. Select locale for number display
+	 3.4. Don't touch any other settings
  4. Save
  5. Listen music and see your LastFM profile

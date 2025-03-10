@@ -11,11 +11,16 @@ custom_fields:
   field_type: string
   name: API Key
   description: Your LastFM API Key
-  placeholder: xxxxxxxxxxxxxxxxxxxxxxxxx
 - keyname: username
   field_type: string
   name: Username
-  description: Your LastFM Username
-  placeholder: username
+- keyname: locale
+  field_type: select
+  options:
+  - en-EN
+  - fr-FR
+  default: en-EN
+  name: Locale
+  description: Select locale for number display
 name: LastFM
 refresh_interval: 15

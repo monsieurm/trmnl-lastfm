@@ -60,7 +60,7 @@
     const LFMAPIURL = 'https://ws.audioscrobbler.com/2.0/';
     const LFMUSER = `{{ trmnl.plugin_settings.custom_fields_values.username }}`;
     const LFMAPIKEY = `{{ trmnl.plugin_settings.custom_fields_values.api_key }}`;
-    const locale = 'en-US';
+    const locale = `{{ trmnl.plugin_settings.custom_fields_values.locale }}`;
 
     /**
     * Converts a Unix timestamp into a readable date
