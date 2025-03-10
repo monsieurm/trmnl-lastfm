@@ -59,15 +59,14 @@
     const LFMAPIURL = 'https://ws.audioscrobbler.com/2.0/';
     const LFMUSER = `{{ trmnl.plugin_settings.custom_fields_values.username }}`;
     const LFMAPIKEY = `{{ trmnl.plugin_settings.custom_fields_values.api_key }}`;
-
+    const locale = 'en-US';
 
     /**
- * Converts a Unix timestamp into a readable date
- * @param {number|string} timestamp - The timestamp to convert (can be a number or a string)
- * @param {string} locale - The locale for formatting (default: "en-US")
- * @returns {string} - The formatted date (e.g., "Monday, March 10, 2025, 2:30 PM")
- */
-    function formatTimestamp(timestamp, locale = "en-US") {
+    * Converts a Unix timestamp into a readable date
+    * @param {number|string} timestamp - The timestamp to convert (can be a number or a string)
+    * @returns {string} - The formatted date (e.g., "Monday, March 10, 2025, 2:30 PM")
+    */
+    function formatTimestamp(timestamp) {
       if (!timestamp) return "Unknown date";
 
       const ts = Number(timestamp) * 1000;
@@ -76,9 +75,9 @@
       const date = new Date(ts);
 
       return date.toLocaleDateString(locale, {
-        weekday: "short", // Day name (e.g., Monday, Tuesday)
+        weekday: "long", // Day name (e.g., Monday, Tuesday)
         day: "numeric", // Day of the month
-        month: "short", // Month name
+        month: "long", // Month name
         year: "numeric", // Year
         hour: "2-digit", // Hour
         minute: "2-digit" // Minutes
@@ -86,11 +85,11 @@
     }
 
     /**
- * Make a request to the Last.fm API with the given parameters
- * @param {string} method - Last.fm API method name
- * @param {Object} params - Additional request parameters
- * @returns {Promise<Object>} - Response JSON data
- */
+    * Make a request to the Last.fm API with the given parameters
+    * @param {string} method - Last.fm API method name
+    * @param {Object} params - Additional request parameters
+    * @returns {Promise<Object>} - Response JSON data
+    */
     async function fetchLFMData(method, params = {}) {
       const url = new URL(LFMAPIURL);
       url.search = new URLSearchParams({
@@ -118,10 +117,10 @@
 
       const { playcount, album_count, artist_count, track_count } = data.user;
 
-      document.querySelector(".playcount").textContent = playcount || "N/A";
-      document.querySelector(".album_count").textContent = album_count || "N/A";
-      document.querySelector(".artist_count").textContent = artist_count || "N/A";
-      document.querySelector(".track_count").textContent = track_count || "N/A";
+      document.querySelector(".playcount").textContent = Number(playcount).toLocaleString(locale) || "N/A";
+      document.querySelector(".album_count").textContent = Number(album_count).toLocaleString(locale) || "N/A";
+      document.querySelector(".artist_count").textContent = Number(artist_count).toLocaleString(locale) || "N/A";
+      document.querySelector(".track_count").textContent = Number(track_count).toLocaleString(locale) || "N/A";
     }
 
     async function getLastTrack() {
@@ -132,11 +131,7 @@
 
       if (!track) return;
 
-      document.querySelector(".last_track .value").innerHTML = `
-        <span class="value value--small">${track.name}</span><br>
-        <span class="value value--xsmall">${track.artist["#text"]}</span><br>
-        <span class="value value--xsmall">${track.album["#text"]}</span>
-      `;
+      document.querySelector(".last_track .value").innerHTML = `${track.name} - ${track.artist["#text"]} - ${track.album["#text"]}`;
       document.querySelector(".last_track .label").textContent = track.date ? `Last track on ${formatTimestamp(track.date.uts)}` : "";
     }
 
@@ -145,10 +140,8 @@
         limit: 50,
         page: 1
       });
-      const lovedTrackCount = data?.lovedtracks?.["@attr"]?.total;
 
-      document.querySelector(".loved_track_count").textContent =
-        lovedTrackCount || "N/A";
+      document.querySelector(".loved_track_count").textContent = Number(data?.lovedtracks?.["@attr"]?.total).toLocaleString(locale) || "N/A";
     }
 
     Promise.all([getUserInfo(), getLastTrack(), getLovedTracks()]);
