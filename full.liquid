@@ -3,7 +3,7 @@
     <div class="item">
       <div class="meta"></div>
       <div class="content last_track">
-        <span class="value value--medium value--tnums"></span>
+        <span class="value value--medium value--tnums">&nbsp;</span>
         <span class="label">Last Track Listened</span>
       </div>
     </div>
@@ -13,14 +13,14 @@
     <div class="item">
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums playcount"></span>
+        <span class="value value--small value--tnums playcount">&nbsp;</span>
         <span class="label">Total Scrobbled</span>
       </div>
     </div>
     <div class="item">
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums loved_track_count"></span>
+        <span class="value value--small value--tnums loved_track_count">&nbsp;</span>
         <span class="label">Loved Tracks</span>
       </div>
     </div>
@@ -28,21 +28,21 @@
     <div class="item">
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums album_count"></span>
+        <span class="value value--small value--tnums album_count">&nbsp;</span>
         <span class="label">Albums Scrobbled</span>
       </div>
     </div>
     <div class="item">
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums artist_count"></span>
+        <span class="value value--small value--tnums artist_count">&nbsp;</span>
         <span class="label">Artists Scrobbled</span>
       </div>
     </div>
     <div class="item">
       <div class="meta"></div>
       <div class="content">
-        <span class="value value--small value--tnums track_count"></span>
+        <span class="value value--small value--tnums track_count">&nbsp;</span>
         <span class="label">Tracks Scrobbled</span>
       </div>
     </div>
@@ -127,8 +127,6 @@
     async function getLastTrack() {
       const data = await fetchLFMData("user.getRecentTracks", { limit: 1 });
       const track = data?.recenttracks?.track?.[0];
-
-      console.log(track);
 
       if (!track) return;
 

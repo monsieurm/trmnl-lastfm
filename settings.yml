@@ -1,10 +1,10 @@
 ---
-strategy: static
+strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: ''
-polling_url: ''
+polling_url: https://usetrmnl.com/custom_plugin_example_data.json
 polling_headers: ''
 custom_fields:
 - keyname: api_key

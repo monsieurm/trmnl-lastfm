@@ -128,8 +128,6 @@
       const data = await fetchLFMData("user.getRecentTracks", { limit: 1 });
       const track = data?.recenttracks?.track?.[0];
 
-      console.log(track);
-
       if (!track) return;
 
       document.querySelector(".last_track .value").innerHTML = `${track.name} - ${track.artist["#text"]} - ${track.album["#text"]}`;
