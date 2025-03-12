@@ -112,7 +112,7 @@
     }
 
     async function getUserInfo() {
-      const data = await fetchLFMData("user.getInfo");
+      const data = JSON.parse(`{{ ref_PDR }}`.replace(/=>/g, ':'));
 
       if (!data?.user) return;
 
@@ -125,7 +125,7 @@
     }
 
     async function getLastTrack() {
-      const data = await fetchLFMData("user.getRecentTracks", { limit: 1 });
+      const data = JSON.parse(`{{ ref_PCW }}`.replace(/=>/g, ':'));
       const track = data?.recenttracks?.track?.[0];
 
       if (!track) return;
@@ -135,10 +135,7 @@
     }
 
     async function getLovedTracks() {
-      const data = await fetchLFMData("user.getlovedtracks", {
-        limit: 50,
-        page: 1
-      });
+      const data = JSON.parse(`{{ ref_TBS }}`.replace(/=>/g, ':'));
 
       document.querySelector(".loved_track_count").textContent = Number(data?.lovedtracks?.["@attr"]?.total).toLocaleString(locale) || "N/A";
     }

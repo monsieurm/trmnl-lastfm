@@ -3,8 +3,8 @@ strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
-polling_verb: ''
-polling_url: https://usetrmnl.com/custom_plugin_example_data.json
+polling_verb: get
+polling_url: https://ws.audioscrobbler.com/2.0/?method=user.getInfo&user={{username}}&api_key={{api_key}}&format=json,https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user={{username}}&api_key={{api_key}}&format=json&limit=1,https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user={{username}}&api_key={{api_key}}&format=json&limit=50&page=1
 polling_headers: ''
 custom_fields:
 - keyname: api_key
