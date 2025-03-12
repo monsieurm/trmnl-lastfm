@@ -56,9 +56,6 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', event => {
-    const LFMAPIURL = 'https://ws.audioscrobbler.com/2.0/';
-    const LFMUSER = `{{ trmnl.plugin_settings.custom_fields_values.username }}`;
-    const LFMAPIKEY = `{{ trmnl.plugin_settings.custom_fields_values.api_key }}`;
     const locale = `{{ trmnl.plugin_settings.custom_fields_values.locale }}`;
 
     /**
@@ -82,32 +79,6 @@
         hour: "2-digit", // Hour
         minute: "2-digit" // Minutes
       });
-    }
-
-    /**
-    * Make a request to the Last.fm API with the given parameters
-    * @param {string} method - Last.fm API method name
-    * @param {Object} params - Additional request parameters
-    * @returns {Promise<Object>} - Response JSON data
-    */
-    async function fetchLFMData(method, params = {}) {
-      const url = new URL(LFMAPIURL);
-      url.search = new URLSearchParams({
-        method,
-        user: LFMUSER,
-        api_key: LFMAPIKEY,
-        format: "json",
-        ...params
-      }).toString();
-
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-        return await response.json();
-      } catch (error) {
-        console.error(`Error during data recovery for ${method}:`, error);
-        return null;
-      }
     }
 
     async function getUserInfo() {
