@@ -5,6 +5,7 @@ This plug-in shows LastFM last track listened and other user information on [TRM
 ![enter image description here](https://raw.githubusercontent.com/monsieurm/trmnl-lastfm/refs/heads/main/trmnl-lastfm.png)
 
 **Steps to scrobble:**
+
 To track the music you're listening to, you'll need a LastFM account, then please follow the instructions on [this page](https://www.last.fm/about/trackmymusic) for your music player. Personally, I'm on Apple Music and I use [NepTunes](https://micropixels.software/apps/neptunes).
 
 **Steps to show on TRMNL:**
