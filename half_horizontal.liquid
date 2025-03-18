@@ -73,17 +73,17 @@
       const date = new Date(ts);
 
       return date.toLocaleDateString(locale, {
-        weekday: "long", // Day name (e.g., Monday, Tuesday)
-        day: "numeric", // Day of the month
-        month: "long", // Month name
-        year: "numeric", // Year
-        hour: "2-digit", // Hour
-        minute: "2-digit" // Minutes
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
       });
     }
 
     async function getUserInfo() {
-      const data = JSON.parse(`{{ ref_PDR }}`.replace(/=>/g, ':'));
+      const data = JSON.parse(`{{ IDX_0 }}`.replace(/=>/g, ':'));
 
       if (!data?.user) return;
 
@@ -94,9 +94,9 @@
       document.querySelector(".artist_count").textContent = Number(artist_count).toLocaleString(locale) || "N/A";
       document.querySelector(".track_count").textContent = Number(track_count).toLocaleString(locale) || "N/A";
     }
-
+    
     async function getLastTrack() {
-      const data = JSON.parse(`{{ ref_PCW }}`.replace(/=>/g, ':'));
+      const data = JSON.parse(`{{ IDX_1 }}`.replace(/=>/g, ':'));
       const track = data?.recenttracks?.track?.[0];
 
       if (!track) return;
@@ -106,7 +106,7 @@
     }
 
     async function getLovedTracks() {
-      const data = JSON.parse(`{{ ref_TBS }}`.replace(/=>/g, ':'));
+      const data = JSON.parse(`{{ IDX_2 }}`.replace(/=>/g, ':'));
 
       document.querySelector(".loved_track_count").textContent = Number(data?.lovedtracks?.["@attr"]?.total).toLocaleString(locale) || "N/A";
     }
