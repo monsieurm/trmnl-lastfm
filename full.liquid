@@ -1,10 +1,17 @@
 <div class="layout layout--col gap--space-between">
-  <div class="grid grid">
-    <div class="item">
-      <div class="meta"></div>
-      <div class="content last_track">
-        <span class="value value--medium value--tnums">&nbsp;</span>
-        <span class="label">Last Track Listened</span>
+  <div class="grid">
+    <div class="col--span-1">
+      <div class="item">
+        <div class="content last_track_artwork"></div>
+      </div>
+    </div>
+    <div class="col--span-2 col col--start flex flex--row flex--stretch">
+      <div class="item">
+        <div class="meta"></div>
+        <div class="content last_track">
+          <span class="value value--medium value--tnums">&nbsp;</span>
+          <span class="label" style="margin-top: auto;">Last Track Listened</span>
+        </div>
       </div>
     </div>
   </div>
@@ -94,12 +101,14 @@
       document.querySelector(".artist_count").textContent = Number(artist_count).toLocaleString(locale) || "N/A";
       document.querySelector(".track_count").textContent = Number(track_count).toLocaleString(locale) || "N/A";
     }
-    
+
     async function getLastTrack() {
       const data = JSON.parse(`{{ IDX_1 }}`.replace(/=>/g, ':'));
       const track = data?.recenttracks?.track?.[0];
 
       if (!track) return;
+
+      document.querySelector(".last_track_artwork").innerHTML = `<img src="${track.image[3]['#text']}" class="w--full image-dither" alt="">`;
 
       document.querySelector(".last_track .value").innerHTML = `
         <span class="value value--medium">${track.name}</span><br>
