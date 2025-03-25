@@ -10,7 +10,9 @@ custom_fields:
 - keyname: api_key
   field_type: string
   name: API Key
-  description: Your LastFM API Key
+  description: Your LastFM API Key - Get your api key <a href="https://www.last.fm/api"
+    class="underline" target="_blank">here</a>."
+  placeholder: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - keyname: username
   field_type: string
   name: Username
