@@ -2,7 +2,7 @@
 
 This plug-in shows LastFM last track listened and other user information on [TRMNL device](https://usetrmnl.com/)
 
-![enter image description here](https://raw.githubusercontent.com/monsieurm/trmnl-lastfm/refs/heads/main/trmnl-lastfm.png)
+![enter image description here](https://raw.githubusercontent.com/monsieurm/trmnl-lastfm/refs/heads/main/trmnl-lastfm.bmp)
 
 **Steps to scrobble:**
 
